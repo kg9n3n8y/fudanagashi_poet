@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // HTML要素の取得
     const imageElement = document.getElementById('random-image');
     const reloadButton = document.getElementById('reload-button');
-    const poet = document.getElementById('poet');
+    const poet = document.getElementById('poet-box');
     const poetButton = document.getElementById('poet-button');
 
     // 歌人の表示
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 状態のリセット
     function resetPage(){
         imageElement.src = './torifuda/tori_0.png';
-        poet.textContent = '序歌：王仁';
+        poet.innerHTML = "<div id='poet'><ruby>序歌<rt>じょか</rt></ruby><ruby>：<rt>　</rt></ruby><ruby>王仁<rt>わに</rt></ruby></div>";
         poet.style.display = 'none';
         currentFuda = 0;
         fudaOrder = shuffleArray(fudaOrder);
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const fuda = fudaOrder[order];
         const isFlipped = Math.random() < 0.5;
         imageElement.src = isFlipped ? fuda.reverse : fuda.normal;
-        document.getElementById('poet').innerHTML = fuda.poet;
+        document.getElementById('poet-box').innerHTML = fuda.poet;
     }
 
     // 画像クリック時のイベント

@@ -13,7 +13,7 @@ body {
 }
 
 #image-container {
-  width            : 300px;
+  width            : 280px;
   height           : auto;
   display          : flex;
   align-items      : center;
@@ -43,12 +43,19 @@ button {
   font-size        : 24px;
 }
 
-#poet {
+#poet-box {
   font-size        : 30px;
   color            : #cc0000;
   margin           : 0;
   display          : none;
   text-align       : center;
+  flex-direction   : column;
+}
+
+.poet {
+  margin           : 0;
+  padding-top      : 10px;
+  padding-bottom   : 0;
 }
 
 #preload-image {
