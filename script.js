@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const reloadButton = document.getElementById('reload-button');
     const poet = document.getElementById('poet-box');
     const poetButton = document.getElementById('poet-button');
+    const prefetchedImages = new Set(['./torifuda/tori_0.png']);
+    const prefetchQueue = createPrefetchQueue();
+    schedulePrefetch();
 
     // 歌人の表示
     poetButton.addEventListener('click', function() {
@@ -28,6 +31,62 @@ document.addEventListener("DOMContentLoaded", function() {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    }
+
+    // requestIdleCallbackで空き時間に画像を順次プリフェッチする
+    function createPrefetchQueue() {
+        const queue = new Set(['./torifuda/tori_0.png']);
+        fudalist.forEach((fuda) => {
+            queue.add(fuda.normal);
+            if (fuda.reverse) {
+                queue.add(fuda.reverse);
+            }
+        });
+        return Array.from(queue);
+    }
+
+    function schedulePrefetch() {
+        if (!prefetchQueue.length) {
+            return;
+        }
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(runPrefetch, { timeout: 2000 });
+        } else {
+            setTimeout(() => {
+                runPrefetch({ didTimeout: true, timeRemaining: () => 50 });
+            }, 200);
+        }
+    }
+
+    function runPrefetch(deadline) {
+        const BATCH_SIZE = 4;
+        let processed = 0;
+
+        while (prefetchQueue.length && processed < BATCH_SIZE && (deadline.timeRemaining() > 10 || deadline.didTimeout)) {
+            const url = prefetchQueue.shift();
+            if (prefetchedImages.has(url)) {
+                continue;
+            }
+
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = url;
+            link.as = 'image';
+            link.addEventListener('load', () => link.remove());
+            link.addEventListener('error', () => link.remove());
+            document.head.appendChild(link);
+
+            const img = new Image();
+            img.decoding = 'async';
+            img.src = url;
+
+            prefetchedImages.add(url);
+            processed += 1;
+        }
+
+        if (prefetchQueue.length) {
+            schedulePrefetch();
+        }
     }
 
     // タイマーの停止・リセット

@@ -26,7 +26,7 @@ const fudalist = [
     { no: 25, poet: "<div class='poet'><ruby>三条右大臣<rt>さんじょうのうだいじん</rt></ruby></div><div class='poet'>(<ruby>藤原定方<rt>ふじわらのさだかた</rt></ruby>)</div>", normal: "./torifuda/tori_25.png", reverse: "./torifuda/tori_r_25.png"},
     { no: 26, poet: "<div class='poet'><ruby>貞信公<rt>ていしんこう</rt></ruby></div><div class='poet'>(<ruby>藤原忠平<rt>ふじわらのただひら</rt></ruby>)</div>", normal: "./torifuda/tori_26.png", reverse: "./torifuda/tori_r_26.png"},
     { no: 27, poet: "<div class='poet'><ruby>中納言兼輔<rt>ちゅうなごんかねすけ</rt></ruby></div><div class='poet'>(<ruby>藤原兼輔<rt>ふじわらのかねすけ</rt></ruby>)</div>", normal: "./torifuda/tori_27.png", reverse: "./torifuda/tori_r_27.png"},
-    { no: 28, poet: "<div class='poet'><ruby>源宗行朝臣<rt>みなもとのむねゆきあそん</rt></ruby></div>", normal: "./torifuda/tori_28.png", reverse: "./torifuda/tori_r_28.png"},
+    { no: 28, poet: "<div class='poet'><ruby>源宗于朝臣<rt>みなもとのむねゆきあそん</rt></ruby></div>", normal: "./torifuda/tori_28.png", reverse: "./torifuda/tori_r_28.png"},
     { no: 29, poet: "<div class='poet'><ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby></div>", normal: "./torifuda/tori_29.png", reverse: "./torifuda/tori_r_29.png"},
     { no: 30, poet: "<div class='poet'><ruby>壬生忠岑<rt>みぶのただみね</rt></ruby></div>", normal: "./torifuda/tori_30.png", reverse: "./torifuda/tori_r_30.png"},
     { no: 31, poet: "<div class='poet'><ruby>坂上是則<rt>さかのうえのこれのり</rt></ruby></div>", normal: "./torifuda/tori_31.png", reverse: "./torifuda/tori_r_31.png"},
